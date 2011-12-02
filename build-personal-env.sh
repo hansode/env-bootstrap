@@ -8,13 +8,13 @@ export LC_ALL=C
 set -e
 
 devel_user=$(whoami)
-devel_group=$(getent group $(id -g) | awk -F: '{print $1}')
-devel_home=$(getent passwd ${devel_user} | awk -F: '{print $6}')
+#devel_group=$(getent group $(id -g) 2>/dev/null | awk -F: '{print $1}')
+devel_home=$(getent passwd ${devel_user} 2>/dev/null | awk -F: '{print $6}')
+devel_home=${devel_home:-~}
 work_dir=${devel_home}/work
 
 cat <<EOS
 devel_user  = ${devel_user}
-devel_group = ${devel_group}
 devel_home  = ${devel_home}
 work_dir    = ${work_dir}
 EOS
