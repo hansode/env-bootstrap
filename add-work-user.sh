@@ -19,9 +19,7 @@ devel_group=${devel_user}
 devel_home=/home/${devel_user}
 EOS
 
-exit 0
-
-
+#
 getent group  ${devel_group} >/dev/null || groupadd ${devel_group}
 getent passwd ${devel_user}  >/dev/null || useradd -g ${devel_group} -d ${devel_home} -s /bin/bash -m ${devel_user}
 echo ${devel_user}:${devel_user} | chpasswd
