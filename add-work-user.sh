@@ -6,23 +6,21 @@ export LANG=C
 export LC_ALL=C
 
 set -e
+abs_path=$(cd $(dirname $0) && pwd)
+eval `${abs_path}/detect-linux-distribution.sh`
 
+devel_user=$(echo ${DISTRIB_ID} | tr A-Z a-z)
+devel_group=${devel_user}
+devel_home=/home/${devel_user}
 
-# rhel flavor
-[ -f /etc/redhat-release ] && {
-  [ -f /etc/centos-release ] && {
-    devel_user=centos
-  } || {
-    devel_user=redhat
-  }
-} || {
-  echo not supported distribution.
-  exit 1
-}
-
+cat <<EOS
 devel_user=${devel_user}
 devel_group=${devel_user}
 devel_home=/home/${devel_user}
+EOS
+
+exit 0
+
 
 getent group  ${devel_group} >/dev/null || groupadd ${devel_group}
 getent passwd ${devel_user}  >/dev/null || useradd -g ${devel_group} -d ${devel_home} -s /bin/bash -m ${devel_user}
