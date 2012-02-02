@@ -13,6 +13,7 @@ set -e
 # DISTRIB_DESCRIPTION="Ubuntu 10.04.3 LTS"
 #
 # * /etc/redhat-release
+# CentOS release 5.6 (Final)
 # CentOS Linux release 6.0 (Final)
 # Red Hat Enterprise Linux Server release 6.0 (Santiago)
 # Scientific Linux release 6.0 (Carbon)
