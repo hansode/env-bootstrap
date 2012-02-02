@@ -37,6 +37,10 @@ if [ -f /etc/redhat-release ]; then
     RedHatEnterprise)
       DISTRIB_ID=RHEL
       ;;
+    CentOS*)
+      # 5.x
+      DISTRIB_ID=CentOS
+      ;;
     *)
       DISTRIB_ID=Unknown
       ;;
