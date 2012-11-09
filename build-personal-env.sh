@@ -1,17 +1,22 @@
 #!/bin/bash
 #
+# requires:
+#  bash
+#  whoami, getent, id, awk
+#  cat, mkdir, git
 #
 #
-export LANG=C
-export LC_ALL=C
-
 set -e
 
-devel_user=$(whoami)
+## variables
+
+declare devel_user=$(whoami)
 #devel_group=$(getent group $(id -g) 2>/dev/null | awk -F: '{print $1}')
-devel_home=$(getent passwd ${devel_user} 2>/dev/null | awk -F: '{print $6}')
-devel_home=${devel_home:-~}
-work_dir=${devel_home}/work
+declare devel_home=$(getent passwd ${devel_user} 2>/dev/null | awk -F: '{print $6}')
+declare devel_home=${devel_home:-~}
+declare work_dir=${devel_home}/work
+
+## main
 
 cat <<EOS
 devel_user  = ${devel_user}
@@ -19,20 +24,22 @@ devel_home  = ${devel_home}
 work_dir    = ${work_dir}
 EOS
 
-[ -d ${work_dir} ] || mkdir ${work_dir}
+[[ -d ${work_dir} ]] || mkdir ${work_dir}
 mkdir -p ${work_dir}/repos/git/github.com
 
 cd ${work_dir}/repos/git/github.com
 projects="dotfiles env-builder"
 for project in ${projects}; do
   echo ... ${project}
-  [ -d ${project} ] || git clone git://github.com/hansode/${project}.git
+  [[ -d ${project} ]] || git clone git://github.com/hansode/${project}.git
   cd ${project}
   git pull
   cd -
 done
 
 cd ${work_dir}/repos/git/github.com/dotfiles
-for i in *;do [ -d $i ] || continue; echo ... $i; (cd $i && make); done
-
-exit 0
+for i in *; do
+  [[ -d ${i} ]] || continue
+  echo ... ${i}
+  (cd $i && make)
+done
