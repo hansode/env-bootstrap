@@ -1,10 +1,12 @@
 #!/bin/sh
 #
-
-LANG=C
-LC_ALL=C
-
+# requires:
+#  bash
+#  sed, cat
+#
 set -e
+
+## variables
 
 # * /etc/lsb-release
 # DISTRIB_ID=Ubuntu
@@ -18,16 +20,18 @@ set -e
 # Red Hat Enterprise Linux Server release 6.0 (Santiago)
 # Scientific Linux release 6.0 (Carbon)
 
-DISTRIB_ID=
-DISTRIB_RELEASE=
-DISTRIB_FLAVOR=
+declare DISTRIB_ID=
+declare DISTRIB_RELEASE=
+declare DISTRIB_FLAVOR=
+
+## main
 
 # rhel
-if [ -f /etc/redhat-release ]; then
+if [[ -f /etc/redhat-release ]]; then
   DISTRIB_FLAVOR=RedHat
-  if [ -f /etc/centos-release ]; then
+  if [[ -f /etc/centos-release ]]; then
     DISTRIB_ID=CentOS
-  elif [ -f  /etc/fedora-release ]; then
+  elif [[ -f  /etc/fedora-release ]]; then
     DISTRIB_ID=Fedora
   else
     # rhel, scientific
@@ -49,9 +53,9 @@ if [ -f /etc/redhat-release ]; then
   fi
   DISTRIB_RELEASE=$(sed -e 's/.*release \(.*\) .*/\1/' /etc/redhat-release)
 # debian
-elif [ -f /etc/debian_version ]; then
+elif [[ -f /etc/debian_version ]]; then
   DISTRIB_FLAVOR=Debian
-  if [ -f /etc/lsb-release ]; then
+  if [[ -f /etc/lsb-release ]]; then
     . /etc/lsb-release
   else
     DISTRIB_ID=Debian
