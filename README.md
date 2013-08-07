@@ -6,7 +6,7 @@ Quick setup environment
 Installing env-bootstrap
 ------------------------
 
-    $ git clone git@github.com:hansode/env-bootstrap.git
+    $ git clone https://github.com/hansode/env-bootstrap.git
 
 Adding work user
 ----------------
