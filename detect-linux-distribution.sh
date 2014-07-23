@@ -5,6 +5,7 @@
 #  sed, cat
 #
 set -e
+set -o pipefail
 
 ## variables
 

@@ -8,6 +8,7 @@
 #  cat, egrep
 #
 set -e
+set -o pipefail
 
 ## variables
 
