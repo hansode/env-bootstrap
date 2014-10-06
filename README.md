@@ -6,7 +6,7 @@ Quick setup environment
 Quick Setup
 -----------
 
-    $ curl -fSkL https://raw.github.com/hansode/env-bootstrap/master/build-personal-env.sh | bash
+    $ curl -fSkL https://raw.githubusercontent.com/hansode/env-bootstrap/master/build-personal-env.sh | bash
 
 Installing env-bootstrap
 ------------------------
