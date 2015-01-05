@@ -39,8 +39,4 @@ for project in ${projects}; do
 done
 
 cd ${work_dir}/repos/git/github.com/dotfiles
-for i in *; do
-  [[ -d ${i} ]] || continue
-  echo ... ${i}
-  (cd $i && make)
-done
+make
