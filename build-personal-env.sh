@@ -31,7 +31,7 @@ cd ${work_dir}/repos/git/github.com
 projects="dotfiles"
 for project in ${projects}; do
   echo ... ${project}
-  [[ -d ${project} ]] || git clone git://github.com/hansode/${project}.git
+  [[ -d ${project} ]] || git clone https://github.com/hansode/${project}.git
   cd ${project}
   git pull
   cd -
