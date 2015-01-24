@@ -25,7 +25,6 @@ devel_home  = ${devel_home}
 work_dir    = ${work_dir}
 EOS
 
-[[ -d ${work_dir} ]] || mkdir ${work_dir}
 mkdir -p ${work_dir}/repos/git/github.com
 
 cd ${work_dir}/repos/git/github.com
