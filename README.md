@@ -35,4 +35,3 @@ Install my github project to ``~/work/git/github.com/``.
     $ ./build-personal-env.sh
 
 + [https://github.com/hansode/dotfiles](https://github.com/hansode/dotfiles)
-+ [https://github.com/hansode/env-builder](https://github.com/hansode/env-builder)
