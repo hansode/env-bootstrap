@@ -8,6 +8,10 @@ Quick Setup
 
     $ curl -fSkL https://raw.githubusercontent.com/hansode/env-bootstrap/master/build-personal-env.sh | bash
 
+or
+
+    $ curl -fsSkL http://bit.ly/env-bootstrap | bash
+
 Installing env-bootstrap
 ------------------------
 
